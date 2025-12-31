@@ -7,6 +7,6 @@ export const metadata = {
    
 };
 
-export default function Contact() {
+export default function ContactPage() {
    return <ContactComp />;
 }

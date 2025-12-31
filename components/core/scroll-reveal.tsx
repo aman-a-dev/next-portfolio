@@ -55,7 +55,7 @@ const ScrollRevealContentA = ({
    });
 
    return (
-      <div className={cn("bg-background", className)} ref={ref0} {...props}>
+      <div className={cn( className)} ref={ref0} {...props}>
          <div className='max-w-[90vw] mx-auto'>
             <div className='flex w-full mx-auto relative z-20'>
                <div

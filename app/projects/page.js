@@ -1,11 +1,13 @@
 import Card from "@/components/core/card";
 import { workList } from "@/components/works-list";
+
 export const metadata = {
    title: "Projects",
    description:
       "Selected real-world projects I’ve built — from web apps to complex full-stack systems."
 };
-export default function Projects() {
+
+export default function ProjectsPage() {
    return (
       <div className='my-4 mb-10'>
          <section className='pt-10 text-center max-w-4xl mx-auto'>
@@ -15,7 +17,7 @@ export default function Projects() {
             <p className='text-xl md:text-2xl text-muted-foreground mb-20'>
                Explore my previous works.
             </p>
-         </section>{" "}
+         </section>
          <div className='flex flex-col gap-1 lg:gap-5 md:grid md:grid-cols-2 lg:grid-cols-3 lg:w-[90%] lg:mx-auto items-start'>
             {workList.map((work, index) => (
                <Card

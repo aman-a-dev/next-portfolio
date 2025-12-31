@@ -20,13 +20,13 @@ export default function Card({
 }) {
    return (
       <div className='flex flex-col p-5 shadow-md dark:shadow-black rounded border dark:border-neutral-800 hover:scale-[1.02] transition-transform duration-300 w-full bg-white dark:bg-neutral-900'>
-         <div className='overflow-hidden rounded-lg'>
+         <div className='overflow-hidden rounded'>
             <Image
                src={src}
                width={600}
                height={350}
                alt={alt}
-               className='w-full h-48 lg:object-cover rounded-lg transition-transform duration-300 hover:scale-105'
+               className='w-full h-48 lg:object-cover  transition-transform duration-300 hover:scale-105'
                placeholder='empty'
                priority
             />

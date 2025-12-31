@@ -1,15 +1,21 @@
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { BorderTrail } from "@/components/core/border-trail";
-
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { BorderTrail } from '@/components/core/border-trail'
+import { StatusIndicator } from '@/components/core/status-indicator'
 export default function Offer() {
    return (
       <div className='flex flex-col justify-center items-center my-5'>
-         <h1 className='section_heading'>Offer</h1>
+         <h1 className='section_heading flex gap-2'>
+            <span>Offer</span>
+            <StatusIndicator
+               state='active'
+               size='lg'
+          />
+         </h1>
          <BorderTrailCard2>
             <h2>
                Pay nothing until the project is launched and you are 100%
-               satisfied.{" "}
+               satisfied.{' '}
                <Link
                   href='/offer'
                   className='underline text-black dark:text-white'
@@ -19,7 +25,7 @@ export default function Offer() {
             </h2>
          </BorderTrailCard2>
       </div>
-   );
+   )
 }
 
 export function BorderTrailCard2({ children }) {
@@ -27,7 +33,7 @@ export function BorderTrailCard2({ children }) {
       <div className='relative w-[90%] md:w-[500px] rounded-md border border-zinc-300/40 bg-zinc-100 px-4 py-3 dark:border-zinc-700/40 dark:bg-zinc-900'>
          <BorderTrail
             className={cn(
-               "bg-linear-to-l from-black to-gray-300 transition-opacity duration-300 dark:from-white dark:to-zinc-800 opacity-100"
+               'bg-linear-to-l from-black to-gray-300 transition-opacity duration-300 dark:from-white dark:to-zinc-800 opacity-100'
             )}
             size={150}
             transition={{
@@ -38,5 +44,5 @@ export function BorderTrailCard2({ children }) {
          />
          <>{children}</>
       </div>
-   );
+   )
 }

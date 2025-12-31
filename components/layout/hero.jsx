@@ -1,33 +1,36 @@
-"use client";
-import Image from "next/image";
-import MyImgLight from "@/public/avatar/me-light.png";
-import MyImgDark from "@/public/avatar/me-dark.png";
-import ClientOnly from "@/components/client-only";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useTheme } from "next-themes";
-import { TextEffect } from "@/components/text/text-effect";
-import { DynamicText } from "@/components/text/dynamic-text";
-import { MagneticNested } from "@/components/core/magnetic";
-import { SpinningTextBasic } from "@/components/text/spinning-text";
-import { Download } from "lucide-react";
-import { Tilt } from "@/components/core/tilt";
-import { Suspense } from "react";
-import { motion } from "motion/react";
-
+'use client'
+import Image from 'next/image'
+import MyImgLight from '@/public/avatar/me-light.png'
+import MyImgDark from '@/public/avatar/me-dark.png'
+import ClientOnly from '@/components/client-only'
+import { toast } from 'sonner'
+import { Button } from '@/components/ui/button'
+import { useIsMobile } from '@/hooks/use-mobile'
+import { useTheme } from 'next-themes'
+import { TextEffect } from '@/components/text/text-effect'
+import { MagneticNested } from '@/components/core/magnetic'
+import { SpinningTextBasic } from '@/components/text/spinning-text'
+import { Download } from 'lucide-react'
+import { Tilt } from '@/components/core/tilt'
+import { Suspense } from 'react'
+import { TextLoop } from '@/components/text/text-loop'
+import { motion } from 'motion/react'
 export default function Hero() {
-   const isMobile = useIsMobile();
-   const { theme } = useTheme();
+   const isMobile = useIsMobile()
+   const { theme } = useTheme()
    return (
       <Suspense>
-         <div className='h-[560px] lg:h-[300px] bg-gray-200 flex flex-col my-5 mx-0 md:flex-row md:justify-around dark:bg-zinc-800/50 relative overflow-hidden'>
+         <div className='h-[560px] md:h-[300px] lg:h-[300px] bg-gray-200 flex flex-col my-5 mx-0 md:flex-row md:justify-around dark:bg-zinc-800/50 relative overflow-hidden'>
             <div className='flex flex-col gap-3 items-start pl-4 pt-5'>
-               <h1 className='text-center text-3xl  md:text-5xl font-black md:text-start'>
-                  <TextLoopBasic />
+               <h1 className='text-center text-3xl  md:text-5xl font-black md:text-start overflow-x-hidden'>
+                  <TextLoop>
+                     <span>Amanuel Anteneh</span>
+                     <span>Aman dev</span>
+                     <span>Hi I'm Aman</span>
+                  </TextLoop>
                </h1>
                <TextEffect
-                  per='word'
+                  per='char'
                   as='h3'
                   preset='slide'
                   className='text-1xl text-muted-foreground'
@@ -38,9 +41,9 @@ export default function Hero() {
                   href='/document/aman_cv_v5.pdf'
                   download='amans_cv.pdf'
                   onClick={() =>
-                     toast.success("Downloading the CV.", {
+                     toast.success('Downloading the CV.', {
                         action: {
-                           label: "Ok"
+                           label: 'Ok'
                         }
                      })
                   }
@@ -69,7 +72,7 @@ export default function Hero() {
                         transition={{ duration: 1 }}
                      >
                         <Image
-                           src={theme == "light" ? MyImgLight : MyImgDark}
+                           src={theme == 'light' ? MyImgLight : MyImgDark}
                            width={300}
                            height={300}
                            alt='Amanuel Anteneh image'
@@ -89,17 +92,5 @@ export default function Hero() {
             </SpinningTextBasic>
          </div>
       </Suspense>
-   );
-}
-
-import { TextLoop } from "@/components/text/text-loop";
-
-export function TextLoopBasic() {
-   return (
-      <TextLoop>
-         <span>Amanuel Anteneh</span>
-         <span>Aman dev</span>
-         <span>Hi,I'm Aman</span>
-      </TextLoop>
-   );
+   )
 }

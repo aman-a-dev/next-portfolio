@@ -5,7 +5,7 @@ export async function POST(request) {
    try {
       const { name, email, message } = await request.json();
       if (!name || !email || !message) {
-         NextResponse.json({ success: false,msg: "All inputs are required. "  });
+         NextResponse.json({ success: false,msg: "All inputs are required."  });
       }
       const client = twilio(
          process.env.TWILIO_ACCOUNT_SID,

@@ -234,12 +234,11 @@ const skillsList = [
    { name: "prisma ORM", icon: prisma(), level: 95 },
    { name: "TypeScript", icon: typescript(), level: 90 }
 ];
-import ScrollStack, { ScrollStackItem } from "@/components/core/scroll-stack";
 
 export default function Skills() {
    return (
       <div
-         className='py-16 transition-colors duration-300 -z-10'
+         className='py-16 transition-colors duration-300'
          id='skills'
       >
          <h1 className='section_heading'>My Skills</h1>
@@ -247,7 +246,7 @@ export default function Skills() {
             {skillsList.map((skill, index) => (
                <motion.li
                   key={index}
-                  className='p-6 rounded-2xl shadow-lg dark:border-neutral-800 dark:shadow-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 z-20'
+                  className='p-6 rounded-2xl shadow-lg dark:border-neutral-800 dark:shadow-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 z-20 bg-background'
                   initial={{ opacity: 0, y: -10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -279,20 +278,6 @@ export default function Skills() {
             
          </ul>
 
-<ScrollStack>
-  <ScrollStackItem>
-    <h2>Card 1</h2>
-    <p>This is the first card in the stack</p>
-  </ScrollStackItem>
-  <ScrollStackItem>
-    <h2>Card 2</h2>
-    <p>This is the second card in the stack</p>
-  </ScrollStackItem>
-  <ScrollStackItem>
-    <h2>Card 3</h2>
-    <p>This is the third card in the stack</p>
-  </ScrollStackItem>
-</ScrollStack>
       </div>
    );
 }
