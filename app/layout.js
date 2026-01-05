@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
       >
          <body className={`${mainFont.className} flex flex-col`}>
             {' '}
-            <GravityStarsBackground/>
+            <GravityStarsBackground />
             <ThemeProvider
                attribute='class'
-               defaultTheme='light'
+               defaultTheme='system'
                enableSystem
             >
                <Toaster />
@@ -33,19 +33,19 @@ export default function RootLayout({ children }) {
 export const metadata = {
    metadataBase: new URL('https://amanadev.vercel.app'),
    title: {
-      default: 'Amanuel Antenh | Full-Stack Web Developer',
-      template: '%s | Amanuel Antenh'
+      default: 'Amanuel Anteneh | Full-Stack Web Developer',
+      template: '%s | Amanuel Anteneh'
    },
    description:
-      'Amanuel Antenh is a full-stack web developer specializing in modern web apps using Next.js, React, Node.js, and Tailwind CSS. Explore my portfolio and services.',
+      'Amanuel Anteneh is a full-stack web developer specializing in modern web apps using Next.js, React, Node.js, and Tailwind CSS. Explore my portfolio and services.',
    authors: [
       {
-         name: 'Amanuel Antenh',
+         name: 'Amanuel Anteneh',
          url: 'https://www.github.com/aman-a-dev'
       }
    ],
    keywords: [
-      'Amanuel Antenh',
+      'Amanuel Anteneh',
       'Full stack developer',
       'Web developer',
       'React.js developer',
@@ -70,25 +70,25 @@ export const metadata = {
       type: 'website',
       locale: 'en_US',
       url: '/',
-      title: 'Amanuel Antenh | Full-Stack Web Developer',
+      title: 'Amanuel Anteneh | Full-Stack Web Developer',
       description:
-         'Explore the portfolio and projects of Amanuel Antenh, a skilled full-stack developer using Next.js, React, Node.js, and Tailwind CSS.',
-      siteName: 'Amanuel Antenh Portfolio',
+         'Explore the portfolio and projects of Amanuel Anteneh, a skilled full-stack developer using Next.js, React, Node.js, and Tailwind CSS.',
+      siteName: 'Amanuel Anteneh Portfolio',
       images: [
          {
             url: '/og-main.png',
             width: 1200,
             height: 630,
-            alt: 'Amanuel Antenh Portfolio'
+            alt: 'Amanuel Anteneh Portfolio'
          }
       ]
    },
    twitter: {
       card: 'summary_large_image',
-      title: 'Amanuel Antenh Portfolio',
+      title: 'Amanuel Anteneh Portfolio',
       description:
          'Full-stack developer portfolio. Explore projects, services, and get in touch.',
       images: ['/og-main.png'],
-      creator: '@AmanuelAntenh'
+      creator: '@AmanuelAnteneh'
    }
 }

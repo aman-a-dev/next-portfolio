@@ -39,15 +39,15 @@ const menuItems = [
 const socialLinks = [
    {
       title: "Telegram",
-      href: "https://x.com/"
+      href: "https://t.me/aman_a_dev"
    },
    {
       title: "Github",
-      href: "https://github.com//"
+      href: "https://github.com/aman-a-dev"
    },
    {
       title: "Email",
-      href: "https://www.linkedin.com/in/"
+      href: "mailto:amanuelantenha@gmail.com'"
    }
 ];
 const menuListvariants = {

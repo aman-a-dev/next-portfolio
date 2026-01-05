@@ -11,7 +11,7 @@ export default function ProjectsPage() {
    return (
       <div className='my-4 mb-10'>
          <section className='pt-10 text-center max-w-4xl mx-auto'>
-            <h1 className='text-5xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
+            <h1 className='section_heading text-5xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
                Projects
             </h1>
             <p className='text-xl md:text-2xl text-muted-foreground mb-20'>

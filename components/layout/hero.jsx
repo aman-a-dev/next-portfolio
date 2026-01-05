@@ -15,6 +15,9 @@ import { Tilt } from '@/components/core/tilt'
 import { Suspense } from 'react'
 import { TextLoop } from '@/components/text/text-loop'
 import { motion } from 'motion/react'
+import { TextType } from '@/components/text/text-type'
+import { WordRotate } from '@/components/text/word-rotate'
+
 export default function Hero() {
    const isMobile = useIsMobile()
    const { theme } = useTheme()
@@ -22,12 +25,18 @@ export default function Hero() {
       <Suspense>
          <div className='h-[560px] md:h-[300px] lg:h-[300px] bg-gray-200 flex flex-col my-5 mx-0 md:flex-row md:justify-around dark:bg-zinc-800/50 relative overflow-hidden'>
             <div className='flex flex-col gap-3 items-start pl-4 pt-5'>
-               <h1 className='text-center text-3xl  md:text-5xl font-black md:text-start overflow-x-hidden'>
-                  <TextLoop>
-                     <span>Amanuel Anteneh</span>
-                     <span>Aman dev</span>
-                     <span>Hi I'm Aman</span>
-                  </TextLoop>
+               <h1 className='text-center text-3xl pointer-events-none md:text-5xl font-black md:text-start overflow-x-hidden'>
+                  {/*<TextType
+                     text={['Amanuel A', 'Aman dev']}
+                     typingSpeed={75}
+                     pauseDuration={2000}
+                     showCursor={true}
+                     cursorCharacter='_'
+                     className=''
+                  />*/}
+                  <WordRotate
+                     words={['Amanuel A', 'Aman dev', "Hi, I'm Aman"]}
+                  />
                </h1>
                <TextEffect
                   per='char'

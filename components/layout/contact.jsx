@@ -1,90 +1,90 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { BorderTrail } from "@/components/core/border-trail";
-import { useState } from "react";
-import axios from "axios";
-import { AnimatePresence } from "motion/react";
-import { toast } from "sonner";
-import { Spinner } from "@/components/ui/spinner";
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { BorderTrail } from '@/components/core/border-trail'
+import { useState } from 'react'
+import axios from 'axios'
+import { AnimatePresence } from 'motion/react'
+import { toast } from 'sonner'
+import { Spinner } from '@/components/ui/spinner'
 
 export default function ContactComp() {
    const [form, setForm] = useState({
-      name: "",
-      email: "",
-      message: ""
-   });
-   const [loading, setLoading] = useState(false);
-   const [error, setError] = useState(null);
-   const [success, setSuccess] = useState(null);
+      name: '',
+      email: '',
+      message: ''
+   })
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const [success, setSuccess] = useState(null)
 
    const handleChange = e => {
-      const { name, value } = e.target;
-      setForm({ ...form, [name]: value });
-      setError(null);
-      setSuccess(null);
-   };
+      const { name, value } = e.target
+      setForm({ ...form, [name]: value })
+      setError(null)
+      setSuccess(null)
+   }
 
    const validateForm = () => {
-      const errors = [];
-      if (!form.name.trim()) errors.push("Name is required.");
+      const errors = []
+      if (!form.name.trim()) errors.push('Name is required.')
       if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email))
-         errors.push("A valid email is required.");
-      if (!form.message.trim()) errors.push("Message cannot be empty.");
+         errors.push('A valid email is required.')
+      if (!form.message.trim()) errors.push('Message cannot be empty.')
       if (form.message.trim().length < 8)
-         errors.push("Message must be greater than 8 character.");
-      return errors;
-   };
+         errors.push('Message must be greater than 8 character.')
+      return errors
+   }
 
    const handleSubmit = async e => {
-      e.preventDefault();
-      setLoading(true);
-      setError(null);
-      setSuccess(null);
+      e.preventDefault()
+      setLoading(true)
+      setError(null)
+      setSuccess(null)
 
-      const errors = validateForm();
+      const errors = validateForm()
       if (errors.length > 0) {
-         setError(errors.join(" "));
-         setLoading(false);
-         return;
+         setError(errors.join(' '))
+         setLoading(false)
+         return
       }
 
       try {
-         const res = await axios.post("/api/message", form);
+         const res = await axios.post('/api/message', form)
          if (res.data.success) {
-            setSuccess("Message sent successfully ✅️");
-            setForm({ name: "", email: "", message: "" });
+            setSuccess('Message sent successfully ✅️')
+            setForm({ name: '', email: '', message: '' })
          } else {
-            setError(res.data.msg || "Failed to send message ❌️");
+            setError(res.data.msg || 'Failed to send message ❌️')
          }
       } catch (err) {
-         console.error(err);
-         setError("Server error occurred ❌️");
+         console.error(err)
+         setError('Server error occurred ❌️')
       } finally {
-         setLoading(false);
+         setLoading(false)
       }
-   };
+   }
 
    return (
       <div className='my-10'>
          {error &&
-            toast.error("An error occurred.", {
+            toast.error('An error occurred.', {
                description: error,
                action: {
-                  label: "Dismise"
+                  label: 'Dismise'
                }
             })}
          {success &&
-            toast.success("You have send the message successfully 😄.", {
-               description: success + " I will reply with your email.",
+            toast.success('You have send the message successfully 😄.', {
+               description: success + ' I will reply with your email.',
                action: {
-                  label: "Dismise"
+                  label: 'Dismise'
                }
             })}
          <div className='flex items-center justify-center flex-col'>
             <section className='pt-10 text-center max-w-4xl mx-auto'>
-               <h1 className='text-5xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
+               <h1 className='section_heading text-5xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
                   Contact Me
                </h1>
                <p className='text-xl md:text-2xl text-muted-foreground mb-20'>
@@ -115,20 +115,23 @@ export default function ContactComp() {
                   value={form.message}
                   onChange={handleChange}
                />
-               <Button type='submit' disabled={loading}>
+               <Button
+                  type='submit'
+                  disabled={loading}
+               >
                   {loading ? (
                      <div className='flex items-center justify-center gap-1'>
                         <Spinner />
                         <span>Sending...</span>
                      </div>
                   ) : (
-                     "Submit"
+                     'Submit'
                   )}
                </Button>
             </form>
          </div>
       </div>
-   );
+   )
 }
 
 export function BorderTrailTextarea({ ...props }) {
@@ -143,5 +146,5 @@ export function BorderTrailTextarea({ ...props }) {
             size={120}
          />
       </div>
-   );
+   )
 }

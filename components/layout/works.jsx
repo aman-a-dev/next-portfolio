@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import Card from "@/components/core/card";
-import { workList } from "@/components/works-list";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Handbag } from "lucide-react";
+import Card from '@/components/core/card'
+import { workList } from '@/components/works-list'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Handbag } from 'lucide-react'
 
 export default function Works() {
    return (
       <div className='w-full'>
-         <h1 className='section_heading'>Previous works</h1>
+         <h1 className='section_heading py-5'>Previous works</h1>
          <div className='flex flex-col gap-6 lg:gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 lg:w-[90%] lg:mx-auto items-start'>
             {workList.slice(0, 3).map((work, index) => (
                <Card
@@ -25,7 +25,10 @@ export default function Works() {
             ))}
          </div>
          <div className='flex justify-center items-center mt-8 mb-4'>
-            <Link href='/projects' className='text-center'>
+            <Link
+               href='/projects'
+               className='text-center'
+            >
                <Button>
                   <span>More</span>
                   <Handbag />
@@ -33,5 +36,7 @@ export default function Works() {
             </Link>
          </div>
       </div>
-   );
+   )
 }
+
+

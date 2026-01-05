@@ -123,7 +123,7 @@ export function MagneticNested({ children }: { children: React.ReactNode }) {
     >
       <button
         type='button'
-        className='inline-flex items-center rounded-lg border border-zinc-100 bg-black px-4 py-2 text-sm text-white transition-all duration-200 hover:bg-white dark:border-zinc-900 dark:bg-white dark:text-black'
+        className='inline-flex items-center rounded-lg border border-zinc-100 bg-black px-4 py-2 text-sm text-white transition-all duration-200 hover:bg-white hover:text-black dark:border-zinc-900 dark:bg-white dark:text-black'
       >
         <Magnetic
           intensity={0.1}

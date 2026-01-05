@@ -24,7 +24,7 @@ export default function Offer() {
    return (
       <div className='min-h-screen bg-gradient-to-b from-background to-muted/30'>
          <section className='pt-32 text-center max-w-4xl mx-auto'>
-            <h1 className='text-5xl md:text-6xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
+            <h1 className='section_heading text-5xl md:text-6xl font-black bg-gradient-to-r from-primary to-foreground bg-clip-text text-transparent mb-6'>
                Risk-Free Development
             </h1>
             <p className='text-xl md:text-2xl text-muted-foreground mb-20'>
