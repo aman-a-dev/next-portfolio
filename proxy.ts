@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { waitUntil } from "@vercel/functions"; // Only if using Vercel – otherwise see fallback
-import UAParser from "ua-parser-js";
+import { waitUntil } from "@vercel/functions";
+import { UAParser } from "ua-parser-js";
 
-export function middleware(request: NextRequest) {
-  // Only handle HTML page requests
+export function proxy(request: NextRequest) {
   const accept = request.headers.get("accept") || "";
   if (!accept.includes("text/html")) {
     return NextResponse.next();
@@ -12,9 +11,10 @@ export function middleware(request: NextRequest) {
 
   const userAgent = request.headers.get("user-agent") || "";
   const path = request.nextUrl.pathname;
-  const ip = request.ip || request.headers.get("x-forwarded-for") || "unknown";
-
-  // Parse and build device info
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
   const parser = new UAParser(userAgent);
   const result = parser.getResult();
 
@@ -24,7 +24,6 @@ export function middleware(request: NextRequest) {
   const browserInfo =
     `${result.browser.name || "Unknown Browser"} ${result.browser.version || ""}`.trim();
 
-  // Fire-and-forget with waitUntil (recommended for serverless)
   waitUntil(
     sendToTelegram({
       path,
@@ -41,8 +40,6 @@ export function middleware(request: NextRequest) {
 
 function formatDeviceInfo(parsed: UAParser.IResult): string {
   const { device, os } = parsed;
-
-  // Determine device type
   let type = device.type || "Desktop";
   if (type === "mobile") type = "📱 Mobile";
   else if (type === "tablet") type = "📟 Tablet";
@@ -52,7 +49,6 @@ function formatDeviceInfo(parsed: UAParser.IResult): string {
   else if (type === "embedded") type = "📟 Embedded";
   else type = "🖥️ Desktop";
 
-  // Build vendor/model string
   let model = device.model ? ` ${device.model}` : "";
   let vendor = device.vendor ? ` (${device.vendor})` : "";
   if (!model && !vendor) model = "";
@@ -86,12 +82,12 @@ async function sendToTelegram(data: {
     body: JSON.stringify({
       chat_id: chatId,
       text: message,
-      parse_mode: "Markdown", // for bold formatting
+      parse_mode: "Markdown",
     }),
   });
 }
 
-// Optional: restrict to specific routes
+// Optional: limit which paths trigger this
 export const config = {
-  matcher: ["/:path*"], // adjust as needed
+  matcher: ["/:path*"],
 };
