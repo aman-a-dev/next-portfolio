@@ -16,7 +16,7 @@ const DEFAULT_COLORS = [
   "#ff2c2ccc",
   "#fa3d1d",
   "#ff6464cc",
-  "#c24141cc",
+  "#693131cc",
   "#f20000cc",
 ];
 const BAND_HALF = 17;

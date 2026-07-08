@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <main>
       <Intro
-        icon={BookCheck}
+        icon={<BookCheck />}
         badge="About"
         heading="About"
         highlight="Me"

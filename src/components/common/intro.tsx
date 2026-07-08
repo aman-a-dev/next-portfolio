@@ -4,12 +4,11 @@ import { momoSignatureFont } from "@/fonts/font";
 import { Badge } from "@/components/ui/badge";
 import { TextEffect } from "@/components/vendor/text-effect";
 import { motion } from "motion/react";
-import { type LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { DiaTextReveal } from "@/components/vendor/dia-text-reveal";
 
 type IntroProps = {
-  icon: LucideIcon;
+  icon: React.ReactNode;
   badge?: string;
   heading: string;
   highlight?: string;
@@ -17,7 +16,7 @@ type IntroProps = {
 };
 
 export function Intro({
-  icon: Icon,
+  icon,
   badge,
   heading,
   highlight,
@@ -31,7 +30,8 @@ export function Intro({
             variant="outline"
             className="border-primary/20 bg-primary/5 mb-4 rounded-full px-4 py-1 text-sm font-medium"
           >
-            <Icon className="text-primary mr-1 h-3.5 w-3.5 animate-pulse" />{" "}
+            {icon}
+            {/*<Icon className="text-primary mr-1 h-3.5 w-3.5 animate-pulse" />{" "}*/}
             {badge}
           </Badge>
         </motion.div>

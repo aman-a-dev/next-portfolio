@@ -33,7 +33,7 @@ const menuItems: MenuItemsType[] = [
   },
   {
     title: "Projects",
-    href: "#projects",
+    href: "/#projects",
     icon: <Book />,
   },
 ];

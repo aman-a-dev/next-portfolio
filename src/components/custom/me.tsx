@@ -29,7 +29,7 @@ export function Me() {
   }
   return (
     <motion.div
-      initial={{ y: -200 }}
+      initial={{ y: 200 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >

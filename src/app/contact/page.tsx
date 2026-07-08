@@ -61,7 +61,7 @@ export default function ContactPage() {
     <main className="flex items-center justify-center min-h-screen p-4">
       <div className="w-full max-w-2xl space-y-6">
         <Intro
-          icon={MessageCircle}
+          icon={<MessageCircle />}
           badge="Contact"
           heading="Get In"
           highlight="Touch"
