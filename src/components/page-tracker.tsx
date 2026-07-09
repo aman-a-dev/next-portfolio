@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export function PageTracker() {
   const pathname = usePathname();
@@ -72,4 +73,12 @@ async function trackVisit(path: string) {
   } catch (error) {
     console.error("Error tracking visit:", error);
   }
+}
+
+export default function MainPageTracker() {
+  return (
+    <Suspense fallback={null}>
+      <PageTracker />
+    </Suspense>
+  );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { momoSignatureFont } from "@/fonts/font";
+
 export default function NotFound() {
   return (
     <div className="h-screen text-center flex flex-col items-center justify-center gap-5 h-[90vh]">
