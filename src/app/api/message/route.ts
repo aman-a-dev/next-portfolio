@@ -1,3 +1,4 @@
+// app/api/message/route.ts
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -9,7 +10,7 @@ type ContactData = {
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse JSON body instead of form data
+    // Parse JSON body
     const body = await request.json();
     const { name, contact, message } = body;
 
@@ -20,18 +21,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check environment variables
+    if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
+      console.error("Telegram credentials missing");
+      return NextResponse.json(
+        { ok: false, msg: "Server configuration error" },
+        { status: 500 },
+      );
+    }
+
     const data: ContactData = { name, contact, message };
 
-    // Fire-and-forget with error logging
-    sendToTelegram(data).catch((error) => {
-      console.error("Failed to send to Telegram:", error);
-    });
+    // Send to Telegram and wait for result to provide better feedback
+    await sendToTelegram(data);
 
-    return NextResponse.json({ ok: true, msg: "Message sent successfully" });
+    return NextResponse.json({ ok: true, msg: "Message sent successfully!" });
   } catch (error) {
     console.error("Error processing request:", error);
     return NextResponse.json(
-      { ok: false, msg: "Internal server error" },
+      {
+        ok: false,
+        msg: error instanceof Error ? error.message : "Internal server error",
+      },
       { status: 500 },
     );
   }
@@ -40,9 +51,9 @@ export async function POST(request: NextRequest) {
 async function sendToTelegram(data: ContactData): Promise<void> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
+
   if (!token || !chatId) {
-    console.warn("Telegram credentials missing – message not sent");
-    return;
+    throw new Error("Telegram credentials not configured");
   }
 
   const d = new Date();
@@ -61,13 +72,12 @@ async function sendToTelegram(data: ContactData): Promise<void> {
     "Dec",
   ];
 
-  // Convert hours to 12‑hour format
   let hours = d.getHours();
   const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12; // 0 becomes 12
+  hours = hours % 12 || 12;
 
   const time = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()} - ${hours}:${String(d.getMinutes()).padStart(2, "0")} ${ampm}`;
-  // Example: "8 Jul 2026 - 12:49 PM"
+
   const message = `
 👨‍💼 New Client
 🏷 Name: ${data.name}
@@ -81,12 +91,17 @@ async function sendToTelegram(data: ContactData): Promise<void> {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text: message }),
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: "HTML", // Using HTML instead of Markdown for better compatibility
+      }),
     },
   );
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Telegram API error (${response.status}): ${errorText}`);
+    console.error(`Telegram API error: ${response.status} - ${errorText}`);
+    throw new Error(`Telegram API error: ${response.status}`);
   }
 }

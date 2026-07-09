@@ -12,6 +12,7 @@ import Footer from "@/components/common/footer";
 
 // font
 import { nunitoFont } from "@/fonts/font";
+import { PageTracker } from "@/components/page-tracker";
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
       <head />
       <body className={nunitoFont.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <PageTracker />
           <NavBar />
           {children}
           <Footer />
