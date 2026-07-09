@@ -11,6 +11,8 @@ import {
   IconBrandPrisma,
   IconComponents,
   IconBrandGit,
+  IconBrandGithub,
+  IconBrandVercel,
 } from "@tabler/icons-react";
 
 const IconBrandPostgresql = () => {
@@ -107,5 +109,15 @@ export const skillsList: skillsType[] = [
     logo: <IconBrandGit />,
     skill: "Git",
     url: "https://git-scm.com",
+  },
+  {
+    logo: <IconBrandGithub size={24} />,
+    skill: "Github",
+    url: "https://github.com",
+  },
+  {
+    logo: <IconBrandVercel size={24} />,
+    skill: "Vercel",
+    url: "https://vercel.com",
   },
 ];

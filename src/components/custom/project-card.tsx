@@ -75,7 +75,7 @@ export function ProjectCard({
           {subTitle}
         </p>
 
-        {/* summary + accordion for the parsed description */}
+        {/* description */}
         <div className="space-y-1 max-h-[100px]">
           <div
             className={`

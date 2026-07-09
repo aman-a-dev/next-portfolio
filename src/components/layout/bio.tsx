@@ -2,10 +2,7 @@ import Link from "next/link";
 import { Heading } from "@/components/common/intro";
 import { Card } from "@/components/ui/card";
 import { Tilt } from "@/components/vendor/tilt";
-import {
-  ScrollVelocityContainer,
-  ScrollVelocityRow,
-} from "@/components/vendor/scroll-based-velocity";
+import { ScrollBasedVelocity } from "@/components/vendor/scroll-based-velocity";
 
 export default function Bio() {
   return (
@@ -14,7 +11,7 @@ export default function Bio() {
       className="w-full flex items-center justify-center flex-col mt-34"
     >
       <Heading text="About" highlight="Me" />
-      <Tilt>
+      <Tilt className="w-full flex items-center justify-center">
         <Card className="md:w-1/3 p-3 mb-10 text-center">
           <p>
             Full-stack developer and UI-focused builder passionate about
@@ -30,15 +27,13 @@ export default function Bio() {
         </Card>
       </Tilt>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-        <ScrollVelocityContainer className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-20">
-          <ScrollVelocityRow baseVelocity={20} direction={1}>
-            Build
-          </ScrollVelocityRow>
+        <ScrollBasedVelocity
+          text="I Build"
+          text2="Test Deploy"
+          default_velocity={5}
+          className="font-display text-center text-4xl font-bold tracking-[-0.02em] text-foreground drop-shadow-sm md:text-7xl md:leading-[5rem]"
+        />
 
-          <ScrollVelocityRow baseVelocity={20} direction={-1}>
-            Test and Deploy
-          </ScrollVelocityRow>
-        </ScrollVelocityContainer>
         <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
         <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
       </div>
