@@ -12,6 +12,49 @@ export type ProjectsType = {
 
 export const projectsList: ProjectsType[] = [
   {
+    badge: "Updated",
+    img: "etcare",
+    title: "ET Care Products",
+    subTitle: "Premium Natural Hair & Skin Care Website",
+    description: `
+    <p>
+      A complete redesign and modernization of the ET Care Products website,
+      built to showcase premium Ethiopian natural hair and skin care products
+      with a faster, more engaging, and mobile-first experience.
+    </p>
+
+    <h4>Highlights</h4>
+    <ul>
+      <li>🌿 Premium landing page with modern product presentation.</li>
+      <li>⚡ Optimized performance and significantly faster loading times.</li>
+      <li>📱 Fully responsive design for desktop, tablet, and mobile.</li>
+      <li>🎨 Elegant UI with smooth animations and improved user experience.</li>
+      <li>📰 Blog, About, Contact, and policy pages with SEO-friendly structure.</li>
+      <li>🚀 Deployed on Vercel with modern Next.js architecture.</li>
+    </ul>
+
+    <p>
+      <strong>Tech:</strong>
+    </p>
+  `,
+    github: "https://github.com/aman-a-dev/etcare",
+    demo: "https://etcare.vercel.app/",
+    teckStack: [
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Framer Motion",
+      "GSAP",
+      "Lenis",
+      "Lucide React",
+      "SEO",
+      "Vercel",
+    ],
+    isPrivate: false,
+  },
+  {
     badge: "Hot",
     img: "hc",
     title: "Hyperchat",

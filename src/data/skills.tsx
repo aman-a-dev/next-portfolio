@@ -13,6 +13,7 @@ import {
   IconBrandGit,
   IconBrandGithub,
   IconBrandVercel,
+  IconBrandPython,
 } from "@tabler/icons-react";
 
 const IconBrandPostgresql = () => {
@@ -20,7 +21,7 @@ const IconBrandPostgresql = () => {
     <svg
       x="0px"
       y="0px"
-      fill="var(--foreground)"
+      fill="currentColor"
       width="24"
       height="24"
       viewBox="0 0 50 50"
@@ -119,5 +120,10 @@ export const skillsList: skillsType[] = [
     logo: <IconBrandVercel size={24} />,
     skill: "Vercel",
     url: "https://vercel.com",
+  },
+  {
+    logo: <IconBrandPython size={24} />,
+    skill: "Python Basics",
+    url: "https://python.org",
   },
 ];
