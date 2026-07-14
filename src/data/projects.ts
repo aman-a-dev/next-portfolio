@@ -13,7 +13,7 @@ export type ProjectsType = {
 export const projectsList: ProjectsType[] = [
   {
     badge: "Updated",
-    img: "etcare",
+    img: "ec",
     title: "ET Care Products",
     subTitle: "Premium Natural Hair & Skin Care Website",
     description: `

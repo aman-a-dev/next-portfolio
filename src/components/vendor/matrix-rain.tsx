@@ -56,9 +56,9 @@ export function MatrixRain({
     const drops = new Array(columns).fill(1);
 
     // Character set: Katakana + numbers
-    const chars =
-      "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890";
-
+    // const chars =
+    //   "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890";
+    const chars = "ሀሁሂሃሄህሆለሉሊላሌልሎሐሑሒሓሔሕሖመሙሚማሜምሞሠሡሢሣሤሥሦረሩሪራሬርሮሰሱሲሳሴስሶ፩፪፫፬፭፮፯፰፱";
     // Helper to get the computed background color from the canvas element
     const getBackgroundColor = () => {
       return getComputedStyle(canvas).backgroundColor; // e.g. "rgb(255,255,255)"
