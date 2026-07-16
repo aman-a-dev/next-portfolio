@@ -20,7 +20,7 @@ const CONTACTS = [
   {
     label: "WhatsApp",
     handle: "+251 902 99 1919",
-    href: "https://wa.me/251902991919",
+    href: "https://wa.link/r73qou",
     icon: IconBrandWhatsapp,
   },
   {
